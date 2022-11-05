@@ -1,0 +1,39 @@
+version: "3.9"
+services:
+  nginx-proxy:
+    image: nginxproxy/nginx-proxy
+    ports:
+      - '80:80'
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+  oauth-provider.local:
+    build:
+      context: ./server
+    volumes:
+      - ./server:/usr/src/app
+    expose:
+      - "3001:3001"
+    environment:
+      - VIRTUAL_HOST=oauth-provider.local
+      - VIRTUAL_PORT=3001
+  example-client.local:
+    build:
+      context: ./client
+    volumes:
+      - ./client:/usr/src/app
+    expose:
+      - "3002:3002"
+    environment:
+    - VIRTUAL_HOST=example-client.local
+    - VIRTUAL_PORT=3002
+  # attacker:
+  #   build:
+  #     context: ./attacker
+  #   volumes:
+  #     - ./attacker:/var/www/html/
+  #   environment:
+  #   - VIRTUAL_HOST=attacker.local
+  whoami:
+    image: containous/whoami
+    environment:
+      - VIRTUAL_HOST=whoami.local

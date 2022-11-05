@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>My Awesome OAUTH provider</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+
+  </head>
+  <body class="text-center">
+    
+    <div class="modal d-block" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Hi <%= user.email %>!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Application <b>(<%= client.name %>)</b> is requesting access to your account.</p>
+            <p>Do you approve?</p>
+          </div>
+          <div class="modal-footer">
+            <form action="/oauth/authorize/decision" method="post">
+              <input name="transaction_id" type="hidden" value="<%= transactionId %>" />
+              <input type="submit" value="Allow" id="allow" class="btn-lg btn btn-primary" />
+              <input type="submit" value="Deny" name="cancel" class="btn btn-lg btn-danger" id="deny" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </body>
+</html>
