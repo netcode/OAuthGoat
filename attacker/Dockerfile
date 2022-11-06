@@ -16,6 +16,6 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-EXPOSE 3003
+EXPOSE 5001
 
 CMD [ "nodemon", "app.js" ]

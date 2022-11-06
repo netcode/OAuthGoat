@@ -6,6 +6,16 @@ services:
       - '80:80'
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
+  attacker.local:
+    build:
+      context: ./attacker
+    volumes:
+      - ./attacker:/usr/src/app
+    expose:
+      - "5001:5001"
+    environment:
+    - VIRTUAL_HOST=attacker.local
+    - VIRTUAL_PORT=5001
   oauth-provider.local:
     build:
       context: ./server
@@ -16,7 +26,7 @@ services:
     environment:
       - VIRTUAL_HOST=oauth-provider.local
       - VIRTUAL_PORT=3001
-  example-client.local:
+  example-client.local: #redirect_uri client
     build:
       context: ./client
     volumes:
@@ -26,16 +36,18 @@ services:
     environment:
     - VIRTUAL_HOST=example-client.local
     - VIRTUAL_PORT=3002
-  attacker.local:
+
+  example-client2.local: #CSRF
     build:
-      context: ./attacker
+      context: ./client-2
     volumes:
-      - ./attacker:/usr/src/app
+      - ./client-2:/usr/src/app
     expose:
       - "3003:3003"
     environment:
-    - VIRTUAL_HOST=attacker.local
+    - VIRTUAL_HOST=example-client-2.local
     - VIRTUAL_PORT=3003
+  
   whoami:
     image: containous/whoami
     environment:

@@ -3,7 +3,7 @@ const express = require('express')
 const ejs = require('ejs')
 
 const app = express()
-const port = 3003
+const port = 5001
 
 app.engine('ejs', ejs.__express);
 app.set('view engine', 'ejs');
