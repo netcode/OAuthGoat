@@ -5,8 +5,9 @@ let users = [
 
 let clients = [
     { name: "Super Awesome Secure Website", id: "54gSlmAMWz3PKdVgNRcR", secret: "d65030eaec444ce1afa94b6552e472bf", redirect_uri: "http://example-client.local/oauth/callback", pre_approval: false },
-    { name: "PreApprovalApp", id: "QRCgN910n7Rr4s3Ee8bf", secret: "d3e9c2cb75cf4ebcad4aa01811bcaca5", redirect_uri: "http://preApprovalApp.local/oauth/callback", pre_approval: true },
-    { name: "z", id: "q9O0kwqgxloGk5TPLzEF", secret: "9b8b9d863a434065867ac8c98e212fbf", redirect_uri: "", pre_approval: false}
+    { name: "Super Awesome Secure Website - Profile linking", id: "q9O0kwqgxloGk5TPLzEF", secret: "9b8b9d863a434065867ac8c98e212fbf", redirect_uri: "http://example-client.local/profile/link/oauth/callback", pre_approval: false},
+    { name: "PreApprovalApp", id: "QRCgN910n7Rr4s3Ee8bf", secret: "d3e9c2cb75cf4ebcad4aa01811bcaca5", redirect_uri: "http://preApprovalApp.local/oauth/callback", pre_approval: true }
+    
 ]
 
 let codes = [

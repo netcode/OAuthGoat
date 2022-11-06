@@ -16,6 +16,8 @@ services:
     environment:
     - VIRTUAL_HOST=attacker.local
     - VIRTUAL_PORT=5001
+
+    
   oauth-provider.local:
     build:
       context: ./server
@@ -37,16 +39,6 @@ services:
     - VIRTUAL_HOST=example-client.local
     - VIRTUAL_PORT=3002
 
-  example-client2.local: #CSRF
-    build:
-      context: ./client-2
-    volumes:
-      - ./client-2:/usr/src/app
-    expose:
-      - "3003:3003"
-    environment:
-    - VIRTUAL_HOST=example-client-2.local
-    - VIRTUAL_PORT=3003
   
   whoami:
     image: containous/whoami

