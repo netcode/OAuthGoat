@@ -26,13 +26,16 @@ services:
     environment:
     - VIRTUAL_HOST=example-client.local
     - VIRTUAL_PORT=3002
-  # attacker:
-  #   build:
-  #     context: ./attacker
-  #   volumes:
-  #     - ./attacker:/var/www/html/
-  #   environment:
-  #   - VIRTUAL_HOST=attacker.local
+  attacker.local:
+    build:
+      context: ./attacker
+    volumes:
+      - ./attacker:/usr/src/app
+    expose:
+      - "3003:3003"
+    environment:
+    - VIRTUAL_HOST=attacker.local
+    - VIRTUAL_PORT=3003
   whoami:
     image: containous/whoami
     environment:

@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 const ejs = require('ejs');
 
 const oauth = require('./libs/oauth');
-const needle = require('needle');
 
 const app = express()
 const port = 3002
@@ -57,5 +56,5 @@ app.get('/oauth/callback', (req,res) => {
 
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-  })
+    console.log(`Client app listening on port ${port}`)
+})

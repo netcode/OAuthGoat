@@ -175,14 +175,25 @@ server.grant(oauth2orize.grant.token((client, user, ares, done) => {
 const authorization = server.authorization(
     (clientId, redirectUri, done) => {
 
-        console.log(clientId, redirectUri);
+        
 
         const client = db.findClient(clientId);
         if(!client) return done("Invalid Client");
+        
+        //check redirect uri
+        if(redirectUri.indexOf(client.redirect_uri) === -1){
+            console.log("error", redirectUri, client.redirect_uri)
+            return done("Error, Invalid redirect URI")
+        }
+        
         //done()
         return done(null, client, redirectUri);
 
     }, (client, user, done) => {
+
+    if(client.pre_approval){
+        return done(null, true)
+    }    
     // // Check if grant request qualifies for immediate approval
     return done(null, false); //true == approved, will redirect immeditely and will not show the dialog
 });
@@ -210,5 +221,5 @@ app.get('/api/user', isAuthorized , (req,res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Server app listening on port ${port}`)
 })
