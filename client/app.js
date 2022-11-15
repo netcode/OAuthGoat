@@ -8,14 +8,19 @@ const oauth = require('./libs/oauth');
 
 const app = express()
 const port = 3002
-
+  
 app.engine('ejs', ejs.__express);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));
-app.use(session({ secret: 'randomSecretHere', resave: false, saveUninitialized: false }))
+app.use(session({
+    secret: 'randomSecretHere', 
+    name: 'oauth-client',
+    resave: false, 
+    saveUninitialized: false, 
+    //cookie : { sameSite: 'none' } 
+}))
 app.use(bodyParser.json({ extended: false }));
 app.use(bodyParser.urlencoded({ extended: false }));
-
 
 app.get('/', (req, res) => {
     res.render('index', {
@@ -102,7 +107,8 @@ app.get('/profile/link/oauth/callback', (req,res) => {
     }
     //exchange for an API token
     oauth.exchangeProfileClient(req.query.code, (error, response) => {
-        console.log(error)
+        console.log('exchange result', response.body)
+        console.log(error,response.body)
         if(error){
             return res.send(error);
         }

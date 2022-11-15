@@ -79,18 +79,18 @@
   </head>
   <body class="text-center">
     
-    <header class="text-bg-dark p-3 mb-3 border-bottom">
+    <header class="text-bg-dark p-3 mb-3 border-bottom" style="color:#fff ;">
         <div class="container">
           <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-light text-decoration-none">
               <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
             </a>
     
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <li><a href="#" class="nav-link px-2 link-secondary">Overview</a></li>
-              <li><a href="#" class="nav-link px-2 link-dark">Inventory</a></li>
-              <li><a href="#" class="nav-link px-2 link-dark">Customers</a></li>
-              <li><a href="#" class="nav-link px-2 link-dark">Products</a></li>
+              <li><a href="#" class="nav-link px-2 link-light">Home</a></li>
+              <li><a href="#" class="nav-link px-2 link-light">About</a></li>
+              <li><a href="#" class="nav-link px-2 link-light">Customers</a></li>
+              <li><a href="#" class="nav-link px-2 link-light">Products</a></li>
             </ul>
     
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
@@ -101,7 +101,7 @@
             <% if (user) { %>
             <div class="dropdown text-end">
                 
-              <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 <%= user.email %>
                 <img src="<%= user.avatar %>" alt="mdo" width="32" height="32" class="rounded-circle">
               </a>
@@ -121,7 +121,7 @@
 
 
     <div class="container">
-
+      <h1>Welcome to the Super Awesome OAuth Provider</h1>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 

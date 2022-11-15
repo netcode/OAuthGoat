@@ -27,7 +27,7 @@ const exchangeProfileClient = (code, callback) => {
         "client_secret": config.profile_client_secret,
         "redirect_uri": config.profile_redirect_uri
     }
-
+    //console.log('exchange profile', data)
     return needle.post(config.authServer.tokenURL, data, {}, callback);
 }
 const exchange = (code, callback) => {
